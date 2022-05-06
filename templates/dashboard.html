@@ -1,0 +1,63 @@
+<DOCTYPE html>
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Dashboard</title>
+    <style>
+      a {text-decoration:None;}
+      </style>
+    </head>
+    <body>
+      <div class='container'>
+      <div class="row">
+        <h1 style='text-align:center;'>Flashcards App</h1>
+      </div>
+      <div class="row jumbotron">
+          <h2>Dashboard</h2>
+<hr class='my-4'>
+    {%if info|length!=0%}
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th scope='col'>S.no</th>
+        <th scope='col'>Decks</th>
+        <th scope='col'>Score</th>
+        <th scope='col'>Last Reviewed</th>
+        <th scope='col'>Edit</th>
+        <th scope='col'>All cards</th>
+      </tr>
+    </thead>
+
+    {%for i in info%}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td><b><a href='/dashboard/{{i.user_id}}/{{i.deck_id}}'>{{i.deck_name}}</a></b></td>
+      <td>{{i.Score}}</td>
+      <td>{{i.last_reviewed}}</td>
+      <td>
+        <ul>
+          <li><a href="/dashboard/{{i.user_id}}/{{i.deck_id}}/change/name">Change Deck Name</a></li>
+          <li><a href="/dashboard/{{i.user_id}}/{{i.deck_id}}/update">Update Deck</a></li>
+          <li><a href='/dashboard/{{i.user_id}}/{{i.deck_id}}/delete/sure'>Remove Deck</a></li>
+        </ul>
+      </td>
+      <td><a href="/dashboard/{{i.user_id}}/{{i.deck_id}}/show/cards">Show all cards</a> </td>
+    </tr>
+    {%endfor%}
+
+  </table>
+</div>
+{%else%}
+<p><b>No Decks.Please create some decks</b></p>
+{%endif%}
+<div class="row">
+
+    <a class='btn btn-primary col-2' href='/dashboard/{{userid2}}/create'>Add new deck</a>
+    <p class='col-8'></p>
+    <a class='btn btn-primary col-2' href="/">log out</a>
+</div>
+<br>
+</div>
+    </body>
+  </html>

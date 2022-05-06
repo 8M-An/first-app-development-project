@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Add New Card</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1 style='text-align:center;'>Flashcards App</h1>
+      </div>
+      <div class="row">
+        <h2>Add New Card</h2>
+      </div>
+      <hr class='my-4'>
+      <form action="/dashboard/{{userid}}/{{deckid}}/add/cards" method="post">
+        <div class="mb-3 row">
+          <label for="deck_id" class='form-label'><b>Deck id</b></label>
+          <input type="text" class='form-control' name="deck_id" value="{{deckid}}" disabled>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="user_id" class='form-label'><b>User id</b></label>
+          <input type="text" class='form-control' name="user_id" value="{{userid}}" disabled>
+        </div>
+        <div class="mb-3 row">
+          <label for="front" class='form-label'><b>Front</b></label>
+          <input type="text" class='form-control' name="front" required>
+        </div>
+        <div class="mb-3 row">
+          <label for="back" class='form-label'><b>Back</b></label>
+          <input type="text" class='form-control' name="back" required>
+        </div>
+
+        <label for="difficulty"><b>Difficulty</b></label><br>
+        <input type='radio' name='difficulty' value='Easy'/> Easy<br>
+        <input type='radio' name='difficulty' value='Medium'/> Medium<br>
+        <input type='radio' name='difficulty' value='Hard'/> Hard<br>
+        <br>
+        <div class="row">
+        <input type='submit' class='btn btn-primary' value='Submit'/>
+        </div>
+
+      </form>
+<br>
+    </div>
+
+  </body>
+</html>
